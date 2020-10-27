@@ -2,9 +2,9 @@ name: rideshare-comparison-tool
 
 on:
   push:
-    branches: [ main, production ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, production ]
+    branches: [ main ]
 
 jobs:
   static-analysis: 
