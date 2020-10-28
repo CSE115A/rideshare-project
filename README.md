@@ -15,3 +15,16 @@ We intend to use Uber’s API to calculate Uber rates, but we will have to creat
    * `yarn` or `yarn -i`  or `yarn install`
 4. Start a local server by running to see the current progress.
    * `yarn start`  
+
+## Available Scripts 
+
+* `yarn start` 
+  * starts a local development server on `http://localhost:3000`
+* `yarn lint` 
+  * runs a linting suite to make sure that the JS files meet the linting requirements
+* `yarn lint:css` 
+  * runs `stylelint` on css modules 
+* `yarn lint:js` 
+  * runs `eslint` on all JS files
+* `yarn build` 
+  * creates a production build 
