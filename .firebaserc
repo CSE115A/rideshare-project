@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "cse115a"
+  },
+  "targets": {
+    "cse115a": {
+      "hosting": {
+        "app": [
+          "rideshare-comparison-tool"
+        ]
+      }
+    }
+  }
+}
