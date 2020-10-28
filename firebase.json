@@ -2,7 +2,6 @@
   "hosting": {
     "public": "build",
     "target": "app",
-    "site": "rideshare-comparison-tool",
     "ignore": [
       "firebase.json",
       "**/.*",
