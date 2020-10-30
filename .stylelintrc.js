@@ -1,4 +1,5 @@
 module.exports = {
+    plugins: ["stylelint-declaration-use-variable"],
     extends: ["stylelint-config-standard", "stylelint-config-recommended-scss"],
     rules: {
       "at-rule-disallowed-list": [
