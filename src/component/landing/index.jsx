@@ -6,8 +6,10 @@ const LandingPageView = () => {
   return (
     <div className="LandingPage">
       <h1>Service Price Comparer</h1>
-      <Address text="From:" render={() => <Address />} />
-      <Address text="To:" render={() => <Address />} />
+      <div className ="Tab1">Rideshare</div>
+      <div className = "Tab2">Food Delivery</div>
+      <Address text="Enter Pickup Location:" render={() => <Address />} />
+      <Address text="Enter Destination:" render={() => <Address />} />
       <button class="submitButton" type="button">
         Submit
       </button>
