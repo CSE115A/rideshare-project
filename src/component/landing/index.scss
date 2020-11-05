@@ -1,24 +1,10 @@
 .LandingPage {
-  background-color: aqua;
+  background-color: lightgray;
 }
 h1{
   border-bottom-style: solid;
+  border-width: 2px;
   text-align: center;
   background-color: lightgreen;
   margin: 0px;
-}
-.Tab1{
-  float: left;
-  border-style: solid;
-  border-top-style: none;
-  margin-left:.25%;
-  width: 49%;
-  text-align: center;
-}
-.Tab2{
-  float:left;
-  border-style: solid;
-  border-top-style:none;
-  width: 49%;
-  text-align: center;
 }
