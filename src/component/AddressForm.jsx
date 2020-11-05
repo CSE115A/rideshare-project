@@ -34,7 +34,7 @@ class AddressForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label class ="FromLabel">
+        <label class="FromLabel">
           Pick-Up Location:
           <input
             id="FromInput"
@@ -43,7 +43,7 @@ class AddressForm extends React.Component {
             onChange={this.handleChange1}
           />
         </label>
-        <label class = "ToLabel">
+        <label class="ToLabel">
           Drop-Off Location:
           <input
             id="ToInput"
@@ -54,6 +54,7 @@ class AddressForm extends React.Component {
         </label>
         <input id="SubmitLabel" type="submit" value="COMPARE!" />
         <p id="output"></p>
+        <div id="myGrid"></div>
       </form>
     );
   }
