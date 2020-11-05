@@ -35,7 +35,7 @@ class AddressForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label class ="FromLabel">
-          Enter Pick-up Location:
+          Pick-Up Location:
           <input
             id="FromInput"
             type="text"
@@ -44,7 +44,7 @@ class AddressForm extends React.Component {
           />
         </label>
         <label class = "ToLabel">
-          Enter Destination:
+          Drop-Off Location:
           <input
             id="ToInput"
             type="text"
