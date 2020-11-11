@@ -1,0 +1,38 @@
+label {
+  display: flex;
+  margin: 20px;
+  font-size: 14pt;
+}
+
+.ToInput {
+  margin-left: 10px;
+  width: 150px;
+}
+
+.FromInput {
+  width: 150px;
+  margin-left: 18px;
+}
+
+.SubmitLabel {
+  margin-left: 110px;
+  font-size: 14pt;
+  width: 160px;
+  height: 50px;
+  background-color: lightgreen;
+  border-color: black;
+  border-width: 3px;
+}
+
+@media (max-width: 402px) {
+  .SubmitLabel {
+    margin-left: 0;
+    margin-left: 25%;
+  }
+}
+
+@media (max-width: 344px) {
+  .ToInput {
+    margin-left: 0;
+  }
+}

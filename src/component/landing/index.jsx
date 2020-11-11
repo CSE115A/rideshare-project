@@ -1,7 +1,7 @@
 import React from "react";
-import Address from "../Address";
 import "./index.scss";
-import AddressForm from "../AddressForm";
+import AddressForm from "../AddressForm/AddressForm";
+
 const LandingPageView = () => {
   return (
     <div className="LandingPage">
