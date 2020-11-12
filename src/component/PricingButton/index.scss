@@ -1,0 +1,15 @@
+.PricingButton {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__button {
+    background-color: #2ab97d;
+    border: none;
+    min-width: 6vw;
+    height: 12vh;
+    width: 12vw;
+    border-radius: 25px;
+  }
+}
