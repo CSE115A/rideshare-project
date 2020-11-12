@@ -6,7 +6,7 @@ const LandingPageView = () => {
   return (
     <div className="LandingPage">
       <h1>Service Price Comparer</h1>
-      <AddressForm render={() => <AddressForm />} />
+      <AddressForm />
     </div>
   );
 };
