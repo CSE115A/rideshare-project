@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */ /* DELETE THIS ENTIRE LINE WHEN WE USE THE VARIABLE */
 import React, { useState, useEffect } from "react";
 import "./index.scss";
 import AddressForm from "../AddressForm/AddressForm";

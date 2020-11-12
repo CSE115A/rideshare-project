@@ -2,10 +2,13 @@ import React from "react";
 import axios from "axios";
 import "./index.scss";
 
-async function getPrices({ pricingEndpoint, changeDisplayPricing }) {
+const authToken = process.env.REACT_APP_PRICES_AUTH_TOKEN;
+const pricesEndpoint = process.env.REACT_APP_PRICES_ENDPOINT;
+
+async function getPrices({ changeDisplayPricing }) {
   const params = {
     headers: {
-      authentication: "3529c67e-78c2-4b05-9216-4c38b29624fa",
+      authentication: authToken,
     },
     params: {
       start_lat: "38.0067935",
@@ -15,7 +18,7 @@ async function getPrices({ pricingEndpoint, changeDisplayPricing }) {
     },
   };
   const response = await axios
-    .get(pricingEndpoint, params)
+    .get(pricesEndpoint, params)
     .then((res) => {
       return res.data;
     })
@@ -26,14 +29,13 @@ async function getPrices({ pricingEndpoint, changeDisplayPricing }) {
 }
 
 const PricingButton = ({ changeDisplayPricing }) => {
-  const pricingEndpoint = "http://localhost:5000/cse115a/us-central1/getPrices";
   return (
     <div className="PricingButton">
       <button
         className="PricingButton__button"
-        onClick={() => getPrices({ pricingEndpoint, changeDisplayPricing })}
+        onClick={() => getPrices({ changeDisplayPricing })}
       >
-        Get Price!
+        Compare!
       </button>
     </div>
   );
