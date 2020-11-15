@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./AddressForm.scss";
 
-const AddressForm = () => {
-  const [originAddress, changeOriginAddress] = useState("");
-  const [destinationAddress, changeDestinationAddress] = useState("");
-
+const AddressForm = ({
+  originAddress,
+  destinationAddress,
+  changeOriginAddress,
+  changeDestinationAddress,
+}) => {
   return (
     <>
       <form className="InputForm">
