@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { getPredictions } from "./Predictions";
+import React from "react";
+import SelectLocation from "component/SelectMenu/Select";
 import "./AddressForm.scss";
 
 const AddressForm = ({
@@ -8,61 +8,36 @@ const AddressForm = ({
   changeOriginAddress,
   changeDestinationAddress,
 }) => {
-  const [originSuggestions, changeOriginSuggestions] = useState([]);
-  const [destinationSuggestions, changeDestinationSuggestions] = useState([]);
-
+  const mapping = [
+    {
+      type: "origin",
+      title: "Pickup Location",
+      placeholderText: "Enter Pickup Location",
+      option: originAddress,
+      onChange: changeOriginAddress,
+    },
+    {
+      type: "destination",
+      title: "Dropoff Location",
+      placeholderText: "Enter Dropoff Location",
+      option: destinationAddress,
+      onChange: changeDestinationAddress,
+    },
+  ];
   return (
     <div className="AddressForm">
-      <div className="AddressForm__originContainer">
-        <div className="AddressForm__originLabel">Pick-Up Location:</div>
-        <input
-          id="FromInput"
-          type="text"
-          className="AddressForm__originInput"
-          placeholder="Enter Pickup Location"
-          value={originAddress}
-          onChange={async (e) => {
-            changeOriginAddress(e.target.value);
-            changeOriginSuggestions(
-              await getPredictions({ input: e.target.value })
-            );
-          }}
-        />
-        {originSuggestions !== undefined &&
-          originSuggestions.map(({ description }) => (
-            <li
-              key={description}
-              onClick={() => changeOriginAddress(description)}
-            >
-              {description}
-            </li>
-          ))}
-      </div>
-      <div className="AddressForm__destinationContainer">
-        <div className="AddressForm__destinationLabel">Drop Off Location:</div>
-        <input
-          id="ToInput"
-          type="text"
-          className="AddressForm__destinationInput"
-          placeholder="Enter Dropoff Location"
-          value={destinationAddress}
-          onChange={async (e) => {
-            changeDestinationAddress(e.target.value);
-            changeDestinationSuggestions(
-              await getPredictions({ input: e.target.value })
-            );
-          }}
-        />
-        {destinationSuggestions !== undefined &&
-          destinationSuggestions.map(({ description }) => (
-            <li
-              key={description}
-              onClick={() => changeDestinationAddress(description)}
-            >
-              {description}
-            </li>
-          ))}
-      </div>
+      {mapping.map(({ type, title, placeholderText, option, onChange }) => (
+        <div key={type} className="AddressForm__intakeContainer">
+          <div className="AddressForm__intakeTitle">{title}</div>
+          <div className="AddressForm__intakeInput">
+            <SelectLocation
+              defaultOption={option}
+              onChange={onChange}
+              placeholder={placeholderText}
+            />
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

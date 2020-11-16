@@ -3,24 +3,21 @@
   flex-direction: column;
   min-height: 5vh;
 
-  &__originContainer {
+  &__intakeContainer {
     display: flex;
-    margin-left: 2vw;
-    padding: 2em 2em;
+    flex-direction: row;
+    padding: 2em;
+    align-items: center;
+    justify-content: flex-start;
   }
 
-  &__destinationContainer {
-    display: flex;
-    margin-left: 2vw;
-    padding: 0 2em 2em;
+  &__intakeTitle {
+    width: 15%;
   }
 
-  &__originInput {
-    margin-left: 2vw;
-  }
-
-  &__destinationInput {
-    margin-left: 2vw;
+  &__intakeInput {
+    width: 50%;
+    padding-left: 0.5em;
   }
 }
 
