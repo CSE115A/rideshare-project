@@ -3,6 +3,7 @@ name: rideshare-comparison-tool
 env:
   REACT_APP_PRICES_ENDPOINT: ${{ secrets.REACT_APP_PRICES_ENDPOINT }}
   REACT_APP_PRICES_AUTH_TOKEN: ${{ secrets.REACT_APP_PRICES_AUTH_TOKEN }}
+  REACT_APP_GOOGLE_MAPS_PLACES_API_KEY: ${{ secrets.REACT_APP_GOOGLE_MAPS_PLACES_API_KEY }}
 
 on:
   push:
