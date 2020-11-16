@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { getPredictions } from "./Predictions";
 import "./AddressForm.scss";
 
@@ -8,37 +8,65 @@ const AddressForm = ({
   changeOriginAddress,
   changeDestinationAddress,
 }) => {
+  const [originSuggestions, changeOriginSuggestions] = useState([]);
+  const [destinationSuggestions, changeDestinationSuggestions] = useState([]);
+
   return (
-    <>
-      <form className="InputForm" autoComplete="off">
-        <label className="FromLabel">
+    <div className="AddressForm">
+      <div className="AddressForm__originContainer">
+        <label className="AddressForm__originLabel">
           Pick-Up Location:
           <input
             id="FromInput"
             type="text"
+            className="AddressForm__originInput"
             placeholder="Enter Pickup Location"
             value={originAddress}
-            onChange={(e) => {
+            onChange={async (e) => {
               changeOriginAddress(e.target.value);
-              getPredictions({ input: e.target.value });
+              changeOriginSuggestions(
+                await getPredictions({ input: e.target.value })
+              );
             }}
           />
+          {originSuggestions !== undefined &&
+            originSuggestions.map(({ description }) => (
+              <li
+                key={description}
+                onClick={() => changeOriginAddress(description)}
+              >
+                {description}
+              </li>
+            ))}
         </label>
-        <label className="ToInput">
+      </div>
+      <div className="AddressForm__destinationContainer">
+        <label className="AddressForm__destinationContainer">
           Drop Off Location:
           <input
             id="ToInput"
             type="text"
             placeholder="Enter Dropoff Location"
             value={destinationAddress}
-            onChange={(e) => {
+            onChange={async (e) => {
               changeDestinationAddress(e.target.value);
-              getPredictions({ input: e.target.value });
+              changeDestinationSuggestions(
+                await getPredictions({ input: e.target.value })
+              );
             }}
           />
+          {destinationSuggestions !== undefined &&
+            destinationSuggestions.map(({ description }) => (
+              <li
+                key={description}
+                onClick={() => changeDestinationAddress(description)}
+              >
+                {description}
+              </li>
+            ))}
         </label>
-      </form>
-    </>
+      </div>
+    </div>
   );
 };
 

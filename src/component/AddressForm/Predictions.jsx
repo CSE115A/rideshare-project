@@ -1,18 +1,18 @@
-import axios from "axios";
+import { Client } from "@googlemaps/google-maps-services-js";
+const client = new Client({});
 
-const predictionEndpoint = process.env.REACT_APP_PREDICTION_ENDPOINT;
+const apiKey = process.env.REACT_APP_GOOGLE_MAPS_PLACES_API_KEY;
 
 export async function getPredictions({ input }) {
-  const predictions = await axios
-    .get(predictionEndpoint, {
-      headers: { "Content-Type": "application/json" },
-      params: { query: input },
+  const predictionResults = await client
+    .placeAutocomplete({
+      params: { input: input, key: apiKey },
     })
     .then((res) => {
-      return res.data.place_predictions;
+      return res.data.predictions;
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(() => {
+      return [];
     });
-  return predictions;
+  return predictionResults;
 }
