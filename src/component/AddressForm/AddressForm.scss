@@ -1,6 +1,17 @@
 .AddressForm {
   display: flex;
   flex-direction: column;
+  min-height: 5vh;
+
+  &__originContainer {
+    display: flex;
+    margin-left: 2vw;
+  }
+
+  &__destinationContainer {
+    display: flex;
+    margin-left: 2vw;
+  }
 }
 
 label {
