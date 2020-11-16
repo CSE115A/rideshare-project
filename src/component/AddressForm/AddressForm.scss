@@ -6,10 +6,20 @@
   &__originContainer {
     display: flex;
     margin-left: 2vw;
+    padding: 2em 2em;
   }
 
   &__destinationContainer {
     display: flex;
+    margin-left: 2vw;
+    padding: 0 2em 2em;
+  }
+
+  &__originInput {
+    margin-left: 2vw;
+  }
+
+  &__destinationInput {
     margin-left: 2vw;
   }
 }

@@ -43,6 +43,7 @@ const AddressForm = ({
         <input
           id="ToInput"
           type="text"
+          className="AddressForm__destinationInput"
           placeholder="Enter Dropoff Location"
           value={destinationAddress}
           onChange={async (e) => {
