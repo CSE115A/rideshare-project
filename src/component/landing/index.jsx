@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */ /* DELETE THIS ENTIRE LINE WHEN WE USE THE VARIABLE */
+//Google API credential: AIzaSyCfxGc5KaUEsaP1sCXoa96lMxQbH9XATZ4
 import React, { useState, useEffect } from "react";
 import "./index.scss";
 import AddressForm from "component/AddressForm/AddressForm";
