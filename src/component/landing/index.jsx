@@ -31,7 +31,7 @@ const LandingPageView = () => {
   const location = {
     address: "1600 Amphitheatre Parkway, Mountain View, California.",
     lat: 37.42216,
-    long: -122.08427,
+    lng: -122.08427,
   };
   return (
     <div className="LandingPage">
@@ -43,7 +43,7 @@ const LandingPageView = () => {
         changeDestinationAddress={changeDestinationAddress}
       />
       <PricingButton changeDisplayPricing={changeDisplayPricing} />
-      <Map location={location} zoomLevel={5} />
+      <Map location={location} zoomLevel={11} />
     </div>
   );
 };
