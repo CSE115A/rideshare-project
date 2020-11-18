@@ -10,7 +10,7 @@ module.exports = {
       },
     ],
     "no-var": "error",
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", {"endOfLine": "auto"}]
   },
   extends: [
     "plugin:prettier/recommended",

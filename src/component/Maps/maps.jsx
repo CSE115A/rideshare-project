@@ -1,20 +1,23 @@
 import React from "react";
 import "./maps.scss";
-import GoogleMapReact from 'google-map-react';
+import GoogleMapReact from "google-map-react";
 
-//Hard coding address of google 
-const location = {
-    address: '1600 Amphitheatre Parkway, Mountain View, California.',
-    lat: 37.42216,
-    long: -122.08427,
-  }
+import { Icon } from "@iconify/react";
+import locationIcon from "@iconify/icons-mdi/map-marker";
+
+const LocationPin = ({ text }) => (
+  <div className="pin">
+    <Icon icon={locationIcon} className="pin-icon" />
+    <p className="pin-text">{text}</p>
+  </div>
+);
 
 //Map component that takes in a location and zoom level
-const Map = ({location, zoomLevel})=>{
-    return(
-    <div class="map">
-        <GoogleMapReact
-        bootstrapURLKeys={{ key: 'API key goes here' }}
+const Map = ({ location, zoomLevel }) => {
+  return (
+    <div id="map" style={{ height: "100vh", width: "100%" }}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: "AIzaSyDkeVPFn77wXLb6mGtODhmdl9CSYPzSeYA" }}
         defaultCenter={location}
         defaultZoom={zoomLevel}
       >
@@ -25,6 +28,7 @@ const Map = ({location, zoomLevel})=>{
         />
       </GoogleMapReact>
     </div>
-    );
+  );
 };
 
+export default Map;
