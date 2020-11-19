@@ -4,31 +4,31 @@
   height: 60vh;
 }
 
-.pin {
+.LocationPin {
   display: flex;
   align-items: center;
   width: 180px;
   color: var(--main-blue);
 }
 
-.pin__icon {
+.LocationPin__icon {
   font-size: 4rem;
 }
 
-.pin__text {
+.LocationPin__text {
   font-size: 1.3em;
 }
 
 @media screen and (min-width: 799px) {
-  .googlemap {
+  .Map {
     height: 80vh;
   }
 
-  .pin {
+  .LocationPin {
     width: 15vw;
   }
 
-  .pin__icon {
+  .LocationPin__icon {
     font-size: 10vw;
   }
 }

@@ -8,9 +8,9 @@ import locationIcon from "@iconify/icons-mdi/map-marker";
 const google_maps_key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 const LocationPin = ({ text }) => (
-  <div className="pin">
-    <Icon icon={locationIcon} className="pin__icon" />
-    <p className="pin__text">{text}</p>
+  <div className="LocationPin">
+    <Icon icon={locationIcon} className="LocationPin__icon" />
+    <p className="LocationPin__text">{text}</p>
   </div>
 );
 
