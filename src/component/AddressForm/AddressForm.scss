@@ -1,3 +1,26 @@
+.AddressForm {
+  display: flex;
+  flex-direction: column;
+  min-height: 5vh;
+
+  &__intakeContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 2em;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &__intakeTitle {
+    width: 15%;
+  }
+
+  &__intakeInput {
+    width: 50%;
+    padding-left: 0.5em;
+  }
+}
+
 label {
   display: flex;
   margin: 20px;

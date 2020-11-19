@@ -1,4 +1,5 @@
 import React from "react";
+import SelectLocation from "component/SelectMenu/Select";
 import "./AddressForm.scss";
 
 const AddressForm = ({
@@ -7,29 +8,37 @@ const AddressForm = ({
   changeOriginAddress,
   changeDestinationAddress,
 }) => {
+  const mapping = [
+    {
+      type: "origin",
+      title: "Pickup Location",
+      placeholderText: "Enter Pickup Location",
+      option: originAddress,
+      onChange: changeOriginAddress,
+    },
+    {
+      type: "destination",
+      title: "Dropoff Location",
+      placeholderText: "Enter Dropoff Location",
+      option: destinationAddress,
+      onChange: changeDestinationAddress,
+    },
+  ];
   return (
-    <>
-      <form className="InputForm">
-        <label className="FromLabel">
-          Pick-Up Location:
-          <input
-            id="FromInput"
-            type="text"
-            value={originAddress}
-            onChange={(e) => changeOriginAddress(e.target.value)}
-          />
-        </label>
-        <label className="ToInput">
-          Drop Off Location:
-          <input
-            id="ToInput"
-            type="text"
-            value={destinationAddress}
-            onChange={(e) => changeDestinationAddress(e.target.value)}
-          />
-        </label>
-      </form>
-    </>
+    <div className="AddressForm">
+      {mapping.map(({ type, title, placeholderText, option, onChange }) => (
+        <div key={type} className="AddressForm__intakeContainer">
+          <div className="AddressForm__intakeTitle">{title}</div>
+          <div className="AddressForm__intakeInput">
+            <SelectLocation
+              defaultOption={option}
+              onChange={onChange}
+              placeholder={placeholderText}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
   );
 };
 
