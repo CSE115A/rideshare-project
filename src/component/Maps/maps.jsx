@@ -9,15 +9,15 @@ const google_maps_key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 const LocationPin = ({ text }) => (
   <div className="pin">
-    <Icon icon={locationIcon} className="pin-icon" />
-    <p className="pin-text">{text}</p>
+    <Icon icon={locationIcon} className="pin__icon" />
+    <p className="pin__text">{text}</p>
   </div>
 );
 
 //Map component that takes in a location and zoom level
 const Map = ({ location, zoomLevel }) => {
   return (
-    <div className="googlemap">
+    <div className="Map">
       <GoogleMapReact
         bootstrapURLKeys={{ key: google_maps_key }}
         defaultCenter={location}
