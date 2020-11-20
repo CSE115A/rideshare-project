@@ -14,7 +14,6 @@ const LocationPin = ({ text }) => (
   </div>
 );
 
-//Map component that takes in a location and zoom level
 const Map = ({ location, zoomLevel }) => {
   return (
     <div className="Map">
