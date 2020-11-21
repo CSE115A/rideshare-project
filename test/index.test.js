@@ -3,7 +3,7 @@ const puppeteer = require("puppeteer");
 let browser;
 
 beforeAll(async () => {
-  browser = await puppeteer.launch();
+  browser = await puppeteer.launch({});
 });
 
 afterAll(async () => {
@@ -15,7 +15,7 @@ describe("TESTY TEST", () => {
     const page = await browser.newPage();
     await page.goto(`http://localhost:3000`);
     await page.waitForSelector(".Map");
-    const element = page.$(".Map");
+    const element = await page.$(".Map");
     expect(element).toBeDefined();
   });
 });
