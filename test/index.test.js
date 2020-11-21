@@ -10,7 +10,7 @@ afterAll(async () => {
   await browser.close();
 });
 
-describe("TESTY TEST", () => {
+describe("First Test", () => {
   test("GET Map element", async () => {
     const page = await browser.newPage();
     await page.goto(`http://localhost:3000`);
