@@ -20,7 +20,8 @@ const SelectLocation = ({ defaultOption, onChange, placeholder }) => {
         return [];
       });
     const options = results.map(({ description }) => {
-      return { value: description, label: description };
+      const value = description.split(",").slice(0, 3).join(",");
+      return { value: value, label: description };
     });
     callback(options);
   };
