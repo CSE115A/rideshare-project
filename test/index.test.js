@@ -20,13 +20,15 @@ describe("Map Test", () => {
   });
 });
 
-describe("Submit Test", () => {
-  test("Submitting form", async () => {
+describe("Components Test", () => {
+  test("Clicking Button", async () => {
     const page = await browser.newPage();
     await page.goto(`http://localhost:3000`);
-    console.log(page.url());
-    await page.type();
-    await page.type();
-    await page.click('Compare!');
+    await page.waitForSelector(".PricingButton__button");
+    const button = await page.$(".PricingButton__button");
+    const clicked = await button.evaluate((button) => {
+      button.click();
+    });
+    expect(clicked).toBeDefined();
   });
 });
