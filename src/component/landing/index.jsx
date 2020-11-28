@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./index.scss";
 import AddressForm from "component/AddressForm/AddressForm";
 import PricingButton from "component/PricingButton/PricingButton";
+import ButtonAppBar from "component/AppBar/AppBar";
 
 const LandingPageView = () => {
   const [originAddress, changeOriginAddress] = useState("");
@@ -27,7 +28,7 @@ const LandingPageView = () => {
 
   return (
     <div className="LandingPage">
-      <h1>Service Price Comparer</h1>
+      <ButtonAppBar />
       <AddressForm
         originAddress={originAddress}
         destinationAddress={destinationAddress}
