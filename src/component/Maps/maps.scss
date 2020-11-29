@@ -5,9 +5,11 @@
 
 .LocationPin {
   display: flex;
-  align-items: center;
+  //align-items: center;
   width: 20px;
   color: var(--main-blue);
+  position: absolute;
+  transform: translate(-50%, -50%);
 }
 
 .LocationPin__icon {
