@@ -1,10 +1,24 @@
 import React from "react";
 import AsyncSelect from "react-select/async";
-import { getPredictions } from "component/AddressForm/Predictions";
+import axios from "axios";
+
+const autocompleteEndpoint = process.env.REACT_APP_AUTOCOMPLETE_ENDPOINT;
+const authToken = process.env.REACT_APP_PRICES_AUTH_TOKEN;
 
 const SelectLocation = ({ defaultOption, onChange, placeholder }) => {
   const loadOptions = async (inputValue, callback) => {
-    const results = await getPredictions({ input: inputValue });
+    const axiosConfig = {
+      params: { input: inputValue },
+      headers: { authentication: authToken },
+    };
+    const results = await axios
+      .get(autocompleteEndpoint, axiosConfig)
+      .then((res) => {
+        return res.data.message;
+      })
+      .catch(() => {
+        return [];
+      });
     const options = results.map(({ description }) => {
       return { value: description, label: description };
     });
