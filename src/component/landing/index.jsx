@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./index.scss";
 import AddressForm from "component/AddressForm/AddressForm";
 import PricingButton from "component/PricingButton/PricingButton";
+import PricesOutput from "component/PricesOutput/index";
 
 const LandingPageView = () => {
   const [originAddress, changeOriginAddress] = useState({
@@ -46,6 +47,10 @@ const LandingPageView = () => {
         originAddress={originAddress}
         destinationAddress={destinationAddress}
       />
+      {Object.keys(uberPrices).length !== 0 &&
+        Object.keys(lyftPrices).length !== 0 && (
+          <PricesOutput lyftPrices={lyftPrices} uberPrices={uberPrices} />
+        )}
     </div>
   );
 };
