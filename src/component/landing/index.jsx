@@ -14,7 +14,6 @@ const LandingPageView = () => {
     address: "",
     geoCodes: {},
   });
-  console.log(originAddress, destinationAddress);
   const [pricingToDisplay, changeDisplayPricing] = useState({
     error: true,
     status: undefined,

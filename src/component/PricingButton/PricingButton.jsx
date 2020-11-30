@@ -26,10 +26,10 @@ async function getPrices({
     .then((res) => {
       return res.data;
     })
-    .catch((err) => {
-      return err.data;
+    .catch(() => {
+      return false;
     });
-  changeDisplayPricing(response);
+  if (response) changeDisplayPricing(response);
 }
 
 const PricingButton = ({

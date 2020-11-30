@@ -3,7 +3,7 @@ import AsyncSelect from "react-select/async";
 import axios from "axios";
 
 const autocompleteEndpoint = process.env.REACT_APP_AUTOCOMPLETE_ENDPOINT;
-const getGeoEndpoint = "http://localhost:5000/cse115a/us-central1/getGeo";
+const getGeoEndpoint = process.env.REACT_APP_GETGEO_ENDPOINT;
 const authToken = process.env.REACT_APP_PRICES_AUTH_TOKEN;
 
 const SelectLocation = ({ defaultOption, onChange, placeholder }) => {
