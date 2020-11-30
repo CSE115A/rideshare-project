@@ -37,10 +37,13 @@ const LandingPageView = () => {
             changeOriginAddress={changeOriginAddress}
             changeDestinationAddress={changeDestinationAddress}
           />
+          <PricingButton changeDisplayPricing={changeDisplayPricing} />
         </div>
         <div className="top-right-side">GoogleMaps</div>
       </div>
-      <PricingButton changeDisplayPricing={changeDisplayPricing} />
+      <div className="bottom-half" align="center">
+        Prices
+      </div>
     </div>
   );
 };

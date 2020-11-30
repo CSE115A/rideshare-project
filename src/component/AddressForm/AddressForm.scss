@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   min-height: 10vh;
-  height: 100%;
+  height: 87%;
 
   &__intakeContainer {
     margin-top: 5%;
@@ -60,5 +60,19 @@ label {
 @media (max-width: 344px) {
   .ToInput {
     margin-left: 0;
+  }
+}
+@media only screen and (max-width: 767px){
+  .AddressForm__intakeTitle {
+    width: 100%;
+    padding-bottom: 1em;
+  }
+  .AddressForm__intakeContainer {
+    flex-direction: column;
+    align-items: left;
+  }
+  .AddressForm__intakeInput {
+    width: 100%;
+    padding-left: 0em;
   }
 }
