@@ -3,6 +3,7 @@ import AsyncSelect from "react-select/async";
 import axios from "axios";
 
 const autocompleteEndpoint = process.env.REACT_APP_AUTOCOMPLETE_ENDPOINT;
+const getGeoEndpoint = "http://localhost:5000/cse115a/us-central1/getGeo";
 const authToken = process.env.REACT_APP_PRICES_AUTH_TOKEN;
 
 const SelectLocation = ({ defaultOption, onChange, placeholder }) => {
@@ -33,9 +34,22 @@ const SelectLocation = ({ defaultOption, onChange, placeholder }) => {
         DropdownIndicator: () => null,
         IndicatorSeparator: () => null,
       }}
-      onChange={(change) => {
+      onChange={async (change) => {
         const toChange = change ? change.value : "";
-        onChange(toChange);
+        let geoCodes = {};
+        if (toChange !== "") {
+          geoCodes = await axios
+            .get(getGeoEndpoint, {
+              params: { address: toChange },
+            })
+            .then((res) => {
+              return res.data.message.geo;
+            })
+            .catch(() => {
+              return {};
+            });
+        }
+        onChange({ address: toChange, geoCodes: geoCodes });
       }}
       loadOptions={loadOptions}
       placeholder={placeholder}

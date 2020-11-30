@@ -5,8 +5,15 @@ import AddressForm from "component/AddressForm/AddressForm";
 import PricingButton from "component/PricingButton/PricingButton";
 
 const LandingPageView = () => {
-  const [originAddress, changeOriginAddress] = useState("");
-  const [destinationAddress, changeDestinationAddress] = useState("");
+  const [originAddress, changeOriginAddress] = useState({
+    address: "",
+    geoCodes: {},
+  });
+  const [destinationAddress, changeDestinationAddress] = useState({
+    address: "",
+    geoCodes: {},
+  });
+  console.log(originAddress, destinationAddress);
   const [pricingToDisplay, changeDisplayPricing] = useState({
     error: true,
     status: undefined,
