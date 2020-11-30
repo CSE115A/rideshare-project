@@ -27,11 +27,24 @@ const SelectLocation = ({ defaultOption, onChange, placeholder }) => {
 
   return (
     <AsyncSelect
-      defaultOptions={defaultOption}
+      theme={(theme) => ({
+        ...theme,
+        borderRadius: 5,
+        colors: {
+          ...theme.colors,
+          primary25: "#0CC4F8",
+          primary: "#0BD989",
+          neutral20: "#0CC4F8",
+          neutral30: "#0CC4F8",
+        },
+        borderColor: "red",
+        borderWidth: "5px",
+      })}
       components={{
         DropdownIndicator: () => null,
         IndicatorSeparator: () => null,
       }}
+      defaultOptions={defaultOption}
       onChange={(change) => {
         const toChange = change ? change.value : "";
         onChange(toChange);

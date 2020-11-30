@@ -10,3 +10,20 @@ h1 {
   background-color: lightgreen;
   margin: 0;
 }
+
+.top-half {
+  height: 50vh
+}
+
+.top-left-side, .top-right-side {
+  width: 50%;
+  height: 100%;
+}
+.top-left-side {
+  float: left;
+}
+.top-right-side {
+  float: right;
+}
+
+// mobile device

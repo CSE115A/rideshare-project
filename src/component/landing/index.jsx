@@ -29,12 +29,17 @@ const LandingPageView = () => {
   return (
     <div className="LandingPage">
       <ButtonAppBar />
-      <AddressForm
-        originAddress={originAddress}
-        destinationAddress={destinationAddress}
-        changeOriginAddress={changeOriginAddress}
-        changeDestinationAddress={changeDestinationAddress}
-      />
+      <div className="top-half">
+        <div className="top-left-side">
+          <AddressForm
+            originAddress={originAddress}
+            destinationAddress={destinationAddress}
+            changeOriginAddress={changeOriginAddress}
+            changeDestinationAddress={changeDestinationAddress}
+          />
+        </div>
+        <div className="top-right-side">GoogleMaps</div>
+      </div>
       <PricingButton changeDisplayPricing={changeDisplayPricing} />
     </div>
   );
