@@ -39,6 +39,13 @@ const LandingPageView = () => {
     lng: -121.9289,
   };
 
+   
+  const pathCoords = [
+    {lat: startLocation.lat, lng: startLocation.lng},
+    {lat: endLocation.lat, lng: endLocation.lng},
+  ];
+  
+  
   return (
     <div className="LandingPage">
       <h1>Service Price Comparer</h1>
