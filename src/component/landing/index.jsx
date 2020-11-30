@@ -38,8 +38,7 @@ const LandingPageView = () => {
     lat: 37.3639,
     lng: -121.9289,
   };
-  
-  
+
   return (
     <div className="LandingPage">
       <h1>Service Price Comparer</h1>
@@ -50,7 +49,11 @@ const LandingPageView = () => {
         changeDestinationAddress={changeDestinationAddress}
       />
       <PricingButton changeDisplayPricing={changeDisplayPricing} />
-      <Map startLocation={startLocation} endLocation={endLocation} zoomLevel={11} />
+      <Map
+        startLocation={startLocation}
+        endLocation={endLocation}
+        zoomLevel={11}
+      />
     </div>
   );
 };

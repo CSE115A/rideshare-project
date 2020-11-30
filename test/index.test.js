@@ -38,7 +38,6 @@ describe("Components Test", () => {
   });
 
   test("Clicking Button", async () => {
-
     const clicked_button = await page.click(".PricingButton__button");
     expect(clicked_button).not.toBeDefined();
   });
@@ -73,11 +72,11 @@ describe("Address Form Input tests", () => {
     });
     expect(dropoffVal).toBe("");
   });
-  
+
   test("a selected address from the drop down will be displayed in the text box", async () => {
     const form_boxes = await page.$$("input");
     const pickup_box = form_boxes[0];
-    
+
     await pickup_box.click();
     await pickup_box.type("112");
     await page.keyboard.press("ArrowDown");
@@ -88,4 +87,3 @@ describe("Address Form Input tests", () => {
     expect(pickupVal).not.toBe("");
   });
 });
-
