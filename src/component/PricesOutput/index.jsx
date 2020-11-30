@@ -4,18 +4,22 @@ import "./index.scss";
 const PricesOutput = ({ lyftPrices, uberPrices }) => {
   return (
     <div className="PricesOutput">
-      {lyftPrices.map(({ displayName, price }) => (
-        <div>
-          {displayName}
-          {price}
-        </div>
-      ))}
-      {uberPrices.map(({ displayName, price }) => (
-        <div>
-          {displayName}
-          {price}
-        </div>
-      ))}
+      <div className="PricesOutput__pricesContainer">
+        {lyftPrices.map(({ displayName, price }) => (
+          <div className="PricesOutput__priceItemContainer">
+            <span className="PricesOutput__pricesItem">{displayName}</span>
+            <span className="PricesOutput__pricesItem">{price}</span>
+          </div>
+        ))}
+      </div>
+      <div className="PricesOutput__pricesContainer">
+        {uberPrices.map(({ displayName, price }) => (
+          <div className="PricesOutput__priceItemContainer">
+            <span className="PricesOutput__pricesItem">{displayName}</span>
+            <span className="PricesOutput__pricesItem">{price}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
