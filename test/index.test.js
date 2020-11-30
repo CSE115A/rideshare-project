@@ -49,7 +49,7 @@ describe("Address Form Input tests", () => {
     const pickup_box = form_boxes[0];
     const dropoff_box = form_boxes[1];
     await pickup_box.click();
-    await pickup_box.type("asdfsaefas");
+    await pickup_box.type("unrelated text");
     let pickupVal = await pickup_box.evaluate((el) => {
       return el.value;
     });
@@ -61,7 +61,7 @@ describe("Address Form Input tests", () => {
     expect(pickupVal).toBe("");
 
     await dropoff_box.click();
-    await dropoff_box.type("asdfsaefas");
+    await dropoff_box.type("random text");
     let dropoffVal = await dropoff_box.evaluate((el) => {
       return el.value;
     });
