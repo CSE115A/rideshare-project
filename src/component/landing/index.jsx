@@ -41,7 +41,11 @@ const LandingPageView = () => {
         changeOriginAddress={changeOriginAddress}
         changeDestinationAddress={changeDestinationAddress}
       />
-      <PricingButton changeDisplayPricing={changeDisplayPricing} />
+      <PricingButton
+        changeDisplayPricing={changeDisplayPricing}
+        originAddress={originAddress}
+        destinationAddress={destinationAddress}
+      />
     </div>
   );
 };
