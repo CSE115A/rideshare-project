@@ -4,17 +4,18 @@
 }
 
 .LocationPin {
-  //display: flex;
-  // //align-items: center;
-  width: 5px;
-  // height: 20px;
-  // color: var(--main-blue);
+  //color: var(--main-blue);
   position: absolute;
-  transform: translate(-33%, -88%);
+  transform: translate(-33%, -85%);
 }
 
-.LocationPin__icon {
-  font-size: .5rem;
+.LocationPin__icon1 {
+  color: red;
+  font-size: 5rem;
+}
+.LocationPin__icon2 {
+  color: blue;
+  font-size: 5rem;
 }
 
 .LocationPin__text {
@@ -31,6 +32,6 @@
   }
 
   .LocationPin__icon {
-    font-size: 10vw;
+    font-size: 8vw;
   }
 }

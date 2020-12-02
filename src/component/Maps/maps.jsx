@@ -6,13 +6,14 @@ import { Icon } from "@iconify/react";
 import locationIcon from "@iconify/icons-mdi/map-marker";
 
 const google_maps_key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-
-const Marker = ({ text }) => (
-  <div>
-    <div className="LocationPin">
-      <Icon icon={locationIcon} className="LocationPin__icon" />
-    </div>
-    <div>{text}</div>
+const Location1 = ({ text1 }) => (
+  <div className="LocationPin">
+    <Icon icon={locationIcon} className="LocationPin__icon1" />
+  </div>
+);
+const Location2 = ({ text2 }) => (
+  <div className="LocationPin">
+    <Icon icon={locationIcon} className="LocationPin__icon2" />
   </div>
 );
 const renderPoly = (map, maps, locations) => {
@@ -45,7 +46,6 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
           renderPoly(map, maps, [startLocation, endLocation]);
         }}
       >
-<<<<<<< HEAD
          <Location1 className="pin"
           lat={startLocation.lat}
           lng={startLocation.lng}
@@ -57,22 +57,6 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
           lng={endLocation.lng}
           text2={endLocation.address}
         /> 
-        {/* <Polyline 
-        path = {pathCoords}
-        geodesic = {true}
-        strokeColor = {'#669DF6'}
-        strokeOpacity = {1.0}
-        strokeWeight = {2}
-        /> */}
-=======
-        {[startLocation, endLocation].map((position) => (
-          <Marker
-            text={position.address}
-            lat={position.lat}
-            lng={position.lng}
-          />
-        ))}
->>>>>>> a1bad1088e06a21bb65ca0e7f252a4a7c61ec7f0
       </GoogleMapReact>
     </div>
   );
