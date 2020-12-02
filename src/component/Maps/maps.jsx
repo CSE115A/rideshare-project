@@ -31,13 +31,7 @@ const Map = ({pathCoords, startLocation, endLocation, zoomLevel }) => {
         defaultCenter={startLocation}
         defaultZoom={zoomLevel}
       >
-        <Marker
-        lat={startLocation.lat}
-        lng={startLocation.lng}
-        text ="Marker"
-        />
-
-         <Location1
+         <Location1 className="pin"
           lat={startLocation.lat}
           lng={startLocation.lng}
           text1={startLocation.address}
