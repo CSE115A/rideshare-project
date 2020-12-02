@@ -3,6 +3,7 @@ import AsyncSelect from "react-select/async";
 import axios from "axios";
 
 const autocompleteEndpoint = process.env.REACT_APP_AUTOCOMPLETE_ENDPOINT;
+const getGeoEndpoint = process.env.REACT_APP_GETGEO_ENDPOINT;
 const authToken = process.env.REACT_APP_PRICES_AUTH_TOKEN;
 
 const SelectLocation = ({ defaultOption, onChange, placeholder }) => {
@@ -20,7 +21,8 @@ const SelectLocation = ({ defaultOption, onChange, placeholder }) => {
         return [];
       });
     const options = results.map(({ description }) => {
-      return { value: description, label: description };
+      const value = description.split(",").slice(0, 3).join(",");
+      return { value: value, label: description };
     });
     callback(options);
   };
@@ -32,9 +34,22 @@ const SelectLocation = ({ defaultOption, onChange, placeholder }) => {
         DropdownIndicator: () => null,
         IndicatorSeparator: () => null,
       }}
-      onChange={(change) => {
+      onChange={async (change) => {
         const toChange = change ? change.value : "";
-        onChange(toChange);
+        let geoCodes = {};
+        if (toChange !== "") {
+          geoCodes = await axios
+            .get(getGeoEndpoint, {
+              params: { address: toChange },
+            })
+            .then((res) => {
+              return res.data.message.geo;
+            })
+            .catch(() => {
+              return {};
+            });
+        }
+        onChange({ address: toChange, geoCodes: geoCodes });
       }}
       loadOptions={loadOptions}
       placeholder={placeholder}

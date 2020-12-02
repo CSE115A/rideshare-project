@@ -3,10 +3,17 @@ import React, { useState, useEffect } from "react";
 import "./index.scss";
 import AddressForm from "component/AddressForm/AddressForm";
 import PricingButton from "component/PricingButton/PricingButton";
+import PricesOutput from "component/PricesOutput/index";
 
 const LandingPageView = () => {
-  const [originAddress, changeOriginAddress] = useState("");
-  const [destinationAddress, changeDestinationAddress] = useState("");
+  const [originAddress, changeOriginAddress] = useState({
+    address: "",
+    geoCodes: {},
+  });
+  const [destinationAddress, changeDestinationAddress] = useState({
+    address: "",
+    geoCodes: {},
+  });
   const [pricingToDisplay, changeDisplayPricing] = useState({
     error: true,
     status: undefined,
@@ -34,7 +41,15 @@ const LandingPageView = () => {
         changeOriginAddress={changeOriginAddress}
         changeDestinationAddress={changeDestinationAddress}
       />
-      <PricingButton changeDisplayPricing={changeDisplayPricing} />
+      <PricingButton
+        changeDisplayPricing={changeDisplayPricing}
+        originAddress={originAddress}
+        destinationAddress={destinationAddress}
+      />
+      {Object.keys(uberPrices).length !== 0 &&
+        Object.keys(lyftPrices).length !== 0 && (
+          <PricesOutput lyftPrices={lyftPrices} uberPrices={uberPrices} />
+        )}
     </div>
   );
 };
