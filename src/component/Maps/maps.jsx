@@ -51,7 +51,7 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
     <div className="Map">
       <GoogleMapReact
         bootstrapURLKeys={{ key: google_maps_key }}
-        defaultCenter={{ lat: 37.3639, lng: -121.9289 }}
+        defaultCenter={{ lat: 36.9741, lng: -122.0308 }}
         defaultZoom={zoomLevel}
         onGoogleApiLoaded={({ map, maps }) => {
           renderPoly(map, maps, [startLocation, endLocation]);
@@ -59,7 +59,7 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
         yesIWantToUseGoogleMapApiInternals
       >
         {mapping.map(({ type, option }, index) => {
-          if (typeof option.geoCodes != "undefined") {
+          if (typeof option.geoCodes.lat != "undefined" && typeof option.geoCodes.lng != "undefined") {
             console.log(option);
             console.log(index);
             return (
@@ -72,7 +72,8 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
               />
             );
           }
-          return null;
+          else
+            return null;
         })}
       </GoogleMapReact>
     </div>
