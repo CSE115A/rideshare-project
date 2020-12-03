@@ -59,7 +59,7 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
         yesIWantToUseGoogleMapApiInternals
       >
         {mapping.map(({ type, option }, index) => {
-          if (typeof option.geoCodes != "undefined") {
+          if (typeof option.geoCodes != {}) {
             console.log(option);
             console.log(index);
             return (

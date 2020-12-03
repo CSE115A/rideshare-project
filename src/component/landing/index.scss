@@ -10,3 +10,45 @@ h1 {
   background-color: lightgreen;
   margin: 0;
 }
+@media only screen and (min-width: 768px){
+  .top-half {
+    height: 50vh;
+    width: 100%;
+  }
+  
+  .top-left-side, .top-right-side {
+    width: 50%;
+    height: 100%;
+  }
+  .top-left-side {
+    float: left;
+  }
+  .top-right-side {
+    float: right;
+  }
+  
+  .bottom-half {
+    width: 100%;
+    height: 50vh;
+  }
+}
+  // mobile device
+@media only screen and (max-width:767px){
+  .LandingPage {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .top-half {
+    height: auto;
+  }
+  .top-left-side {
+    width: 100%;
+  }
+  .top-right-side {
+    height: auto;
+  }
+  .bottom-half {
+    height: 50vh;
+  }
+}

@@ -58,27 +58,35 @@ const LandingPageView = () => {
   return (
     <div className="LandingPage">
       <h1>Service Price Comparer</h1>
-      <AddressForm
-        originAddress={originAddress}
-        destinationAddress={destinationAddress}
-        changeOriginAddress={changeOriginAddress}
-        changeDestinationAddress={changeDestinationAddress}
-      />
-      <PricingButton
-        changeDisplayPricing={changeDisplayPricing}
-        originAddress={originAddress}
-        destinationAddress={destinationAddress}
-      />
-      <Map
-        pathCoords={pathCoords}
-        startLocation={startLocation}
-        endLocation={endLocation}
-        zoomLevel={11}
-      />
-      {Object.keys(uberPrices).length !== 0 &&
-        Object.keys(lyftPrices).length !== 0 && (
-          <PricesOutput lyftPrices={lyftPrices} uberPrices={uberPrices} />
-        )}
+      <div className="top-half">
+        <div className="top-left-side">
+          <AddressForm
+            originAddress={originAddress}
+            destinationAddress={destinationAddress}
+            changeOriginAddress={changeOriginAddress}
+            changeDestinationAddress={changeDestinationAddress}
+          />
+          <PricingButton
+            changeDisplayPricing={changeDisplayPricing}
+            originAddress={originAddress}
+            destinationAddress={destinationAddress}
+          />
+        </div>
+        <div className="top-right-side">
+          <Map
+            pathCoords={pathCoords}
+            startLocation={originAddress}
+            endLocation={destinationAddress}
+            zoomLevel={11}
+          />
+        </div>
+      </div>
+      <div className="bottom-half">
+        {Object.keys(uberPrices).length !== 0 &&
+          Object.keys(lyftPrices).length !== 0 && (
+            <PricesOutput lyftPrices={lyftPrices} uberPrices={uberPrices} />
+          )}
+      </div>
     </div>
   );
 };
