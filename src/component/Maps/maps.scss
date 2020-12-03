@@ -5,7 +5,8 @@
 
 .LocationPin {
   //color: var(--main-blue);
-  position: absolute;
+  position: fixed;
+  transform: translate(-50%, -86%);
 }
 
 .LocationPin__icon1 {
@@ -27,14 +28,6 @@
     margin: auto;
     height: 100%;
     width: 100%;
-  }
-
-  .LocationPin {
-    width: 15vw;
-  }
-
-  .LocationPin__icon {
-    font-size: 8vw;
   }
 }
 
