@@ -5,16 +5,20 @@ import "./index.scss";
 const authToken = process.env.REACT_APP_PRICES_AUTH_TOKEN;
 const pricesEndpoint = process.env.REACT_APP_PRICES_ENDPOINT;
 
-async function getPrices({ changeDisplayPricing }) {
+async function getPrices({
+  changeDisplayPricing,
+  originGeocode,
+  destinationGeocode,
+}) {
   const params = {
     headers: {
       authentication: authToken,
     },
     params: {
-      start_lat: "38.0067935",
-      start_lng: "-122.5496167",
-      end_lat: "37.9742222",
-      end_lng: "-122.5329032",
+      start_lat: originGeocode.lat,
+      start_lng: originGeocode.lng,
+      end_lat: destinationGeocode.lat,
+      end_lng: destinationGeocode.lng,
     },
   };
   const response = await axios
@@ -22,18 +26,28 @@ async function getPrices({ changeDisplayPricing }) {
     .then((res) => {
       return res.data;
     })
-    .catch((err) => {
-      return err.data;
+    .catch(() => {
+      return false;
     });
-  changeDisplayPricing(response);
+  if (response) changeDisplayPricing(response);
 }
 
-const PricingButton = ({ changeDisplayPricing }) => {
+const PricingButton = ({
+  changeDisplayPricing,
+  originAddress,
+  destinationAddress,
+}) => {
   return (
     <div className="PricingButton">
       <button
         className="PricingButton__button"
-        onClick={() => getPrices({ changeDisplayPricing })}
+        onClick={() =>
+          getPrices({
+            changeDisplayPricing,
+            originGeocode: originAddress.geoCodes,
+            destinationGeocode: destinationAddress.geoCodes,
+          })
+        }
       >
         Compare!
       </button>
