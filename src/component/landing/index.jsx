@@ -58,8 +58,8 @@ const LandingPageView = () => {
   return (
     <div className="LandingPage">
       <h1>Service Price Comparer</h1>
-      <div className="top-half">
-        <div className="top-left-side">
+      <div className="LandingPage__topHalf">
+        <div className="LandingPage__topLeftSide">
           <AddressForm
             originAddress={originAddress}
             destinationAddress={destinationAddress}
@@ -72,16 +72,16 @@ const LandingPageView = () => {
             destinationAddress={destinationAddress}
           />
         </div>
-        <div className="top-right-side">
+        <div className="LandingPage__topRightSide">
           <Map
             pathCoords={pathCoords}
             startLocation={originAddress}
             endLocation={destinationAddress}
-            zoomLevel={11}
+            zoomLevel={9}
           />
         </div>
       </div>
-      <div className="bottom-half">
+      <div className="LandingPage__bottomHalf">
         {Object.keys(uberPrices).length !== 0 &&
           Object.keys(lyftPrices).length !== 0 && (
             <PricesOutput lyftPrices={lyftPrices} uberPrices={uberPrices} />

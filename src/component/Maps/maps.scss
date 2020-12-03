@@ -6,7 +6,6 @@
 .LocationPin {
   //color: var(--main-blue);
   position: absolute;
-  transform: translate(-33%, -85%);
 }
 
 .LocationPin__icon1 {
@@ -38,7 +37,8 @@
     font-size: 8vw;
   }
 }
-@media only screen and (max-width: 767px){
+
+@media only screen and (max-width: 767px) {
   .Map {
     height: 40vh;
     width: auto;
