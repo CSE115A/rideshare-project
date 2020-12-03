@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */ /* DELETE THIS ENTIRE LINE WHEN WE USE THE VARIABLE */
+/* eslint-disable no-unused-vars */ /* DELETE THIS ENTIRE LINE WHEN WE USE THE VARIABLES uberPrices AND lyftPrices */
 import React, { useState, useEffect } from "react";
 import "./index.scss";
 import AddressForm from "component/AddressForm/AddressForm";

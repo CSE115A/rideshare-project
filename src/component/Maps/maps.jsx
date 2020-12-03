@@ -87,8 +87,7 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
               />
             );
           }
-          else
-            return null;
+          return null;
         })}
       </GoogleMapReact>
     </div>

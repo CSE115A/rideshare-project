@@ -1,4 +1,0 @@
-export REACT_APP_GOOGLE_MAPS_API_KEY=AIzaSyAzYtezY3BWKLpJ4W8I4mLJxDxP7boCmF0
-export REACT_APP_PRICES_AUTH_TOKEN=3529c67e-78c2-4b05-9216-4c38b29624fa
-export REACT_APP_AUTOCOMPLETE_ENDPOINT=http://localhost:5000/cse115a/us-central1/autocomplete
-export REACT_APP_PRICES_ENDPOINT=http://localhost:5000/cse115a/us-central1/getPrices
