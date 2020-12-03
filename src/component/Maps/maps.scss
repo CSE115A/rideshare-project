@@ -4,34 +4,36 @@
 }
 
 .LocationPin {
-  // display: flex;
-  // //align-items: center;
-  // width: 20px;
-  // height: 20px;
-  //scale: .5;
-  // color: var(--main-blue);
-  position: absolute;
-  transform: translate(-23%, -85%);
+  //color: var(--main-blue);
+  position: fixed;
+  transform: translate(-50%, -86%);
 }
 
-.LocationPin__icon {
-  font-size: 1rem;
+.LocationPin__icon1 {
+  color: red;
+  font-size: 5rem;
+}
+
+.LocationPin__icon2 {
+  color: blue;
+  font-size: 5rem;
 }
 
 .LocationPin__text {
   font-size: 1.3em;
 }
 
-@media screen and (min-width: 799px) {
+@media only screen and (min-width: 768px) {
   .Map {
-    height: 80vh;
+    margin: auto;
+    height: 100%;
+    width: 100%;
   }
+}
 
-  .LocationPin {
-    width: 15vw;
-  }
-
-  .LocationPin__icon {
-    font-size: 10vw;
+@media only screen and (max-width: 767px) {
+  .Map {
+    height: 40vh;
+    width: auto;
   }
 }

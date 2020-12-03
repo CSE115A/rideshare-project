@@ -4,10 +4,17 @@ import "./index.scss";
 import AddressForm from "component/AddressForm/AddressForm";
 import PricingButton from "component/PricingButton/PricingButton";
 import Map from "component/Maps/maps";
+import PricesOutput from "component/PricesOutput/index";
 
 const LandingPageView = () => {
-  const [originAddress, changeOriginAddress] = useState("");
-  const [destinationAddress, changeDestinationAddress] = useState("");
+  const [originAddress, changeOriginAddress] = useState({
+    address: "",
+    geoCodes: {},
+  });
+  const [destinationAddress, changeDestinationAddress] = useState({
+    address: "",
+    geoCodes: {},
+  });
   const [pricingToDisplay, changeDisplayPricing] = useState({
     error: true,
     status: undefined,
@@ -29,38 +36,57 @@ const LandingPageView = () => {
   //Hard coding address of google
   const startLocation = {
     address: "1600 Amphitheatre Parkway, Mountain View, California",
-    lat: 37.42216,
-    lng: -122.08427,
+    geoCodes: {
+      lat: 37.42216,
+      lng: -122.08427,
+    },
   };
 
   const endLocation = {
     address: "1701 Airport Blvd, San Jose, California",
-    lat: 37.3639,
-    lng: -121.9289,
+    geoCodes: {
+      lat: 37.3639,
+      lng: -121.9289,
+    },
   };
 
-   
   const pathCoords = [
-    {lat: startLocation.lat, lng: startLocation.lng},
-    {lat: endLocation.lat, lng: endLocation.lng},
+    { lat: startLocation.lat, lng: startLocation.lng },
+    { lat: endLocation.lat, lng: endLocation.lng },
   ];
-  
-  
+
   return (
     <div className="LandingPage">
       <h1>Service Price Comparer</h1>
-      <AddressForm
-        originAddress={originAddress}
-        destinationAddress={destinationAddress}
-        changeOriginAddress={changeOriginAddress}
-        changeDestinationAddress={changeDestinationAddress}
-      />
-      <PricingButton changeDisplayPricing={changeDisplayPricing} />
-      <Map
-        startLocation={startLocation}
-        endLocation={endLocation}
-        zoomLevel={11}
-      />
+      <div className="LandingPage__topHalf">
+        <div className="LandingPage__topLeftSide">
+          <AddressForm
+            originAddress={originAddress}
+            destinationAddress={destinationAddress}
+            changeOriginAddress={changeOriginAddress}
+            changeDestinationAddress={changeDestinationAddress}
+          />
+          <PricingButton
+            changeDisplayPricing={changeDisplayPricing}
+            originAddress={originAddress}
+            destinationAddress={destinationAddress}
+          />
+        </div>
+        <div className="LandingPage__topRightSide">
+          <Map
+            pathCoords={pathCoords}
+            startLocation={originAddress}
+            endLocation={destinationAddress}
+            zoomLevel={9}
+          />
+        </div>
+      </div>
+      <div className="LandingPage__bottomHalf">
+        {Object.keys(uberPrices).length !== 0 &&
+          Object.keys(lyftPrices).length !== 0 && (
+            <PricesOutput lyftPrices={lyftPrices} uberPrices={uberPrices} />
+          )}
+      </div>
     </div>
   );
 };
