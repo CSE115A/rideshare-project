@@ -3,27 +3,71 @@ const puppeteer = require("puppeteer");
 let browser;
 
 beforeAll(async () => {
-  browser = await puppeteer.launch({});
+  browser = await puppeteer.launch({})
 });
 
 let page;
 
 beforeEach(async () => {
   page = await browser.newPage();
-  await page.goto(`http://localhost:3000`);
-  await page.waitForSelector(".LandingPage");
+  await page.goto(`http://localhost:3000`)
+  await page.waitForSelector(".LandingPage")
 });
 
 afterAll(async () => {
-  await browser.close();
+  await browser.close()
 });
 
-describe("Map Test", () => {
+describe("Map Tests", () => {
   test("GET Map element", async () => {
-    await page.waitForSelector(".Map");
-    const element = await page.$(".Map");
-    expect(element).toBeDefined();
+    await page.waitForSelector(".Map")
+    const map = await page.$(".Map")
+    expect(map).toBeDefined()
   });
+
+  test("Location pin and its address shows up when an address is entered and cleared when address is cleared", async () => {
+    const form_boxes = await page.$$("input");
+    for (const box of form_boxes)
+    {
+      await box.click()
+      await box.type("112")
+      await page.waitForSelector("div[id$=option-0]")
+
+      const first_option = await page.$("div[id$=option-0]")
+      const option_val = await first_option.evaluate((el) => el.innerText)
+      await first_option.click()
+      
+      await page.waitForSelector(".LocationPin")
+      const location = await page.$(".LocationPin")
+      expect(location).not.toBe(null)
+      const location_text = await page.$eval(".LocationPin__text", (el) => el.innerText)
+      expect(location_text).toBeDefined()
+      await box.click()
+      await page.keyboard.press("Delete")
+    }
+    
+  });
+
+  test("Two location pins show up when both addresses are entered", async () => {
+    const form_boxes = await page.$$("input");
+    const pickup_box = form_boxes[0];
+    const dropoff_box = form_boxes[1];
+
+    box_inputs = ["San Francisco", "San Jose"]
+    for (let id = 0; id < form_boxes.length; id++)
+    {
+      await form_boxes[id].click()
+      await form_boxes[id].type(box_inputs[id])
+      await page.waitForSelector("div[id$=option-0]")
+
+      let first_option = await page.$("div[id$=option-0]")
+      await first_option.click()
+    }
+    await page.waitForTimeout(700)
+    const locations = await page.$$(".LocationPin")
+    expect(locations.length).toBe(2)
+    
+  })
 });
 
 describe("Components Test", () => {
@@ -80,20 +124,22 @@ describe("Address Form Input tests", () => {
   test("a selected address from the drop down will be displayed in the text box", async () => {
  
     const form_boxes = await page.$$("input");
-    const pickup_box = form_boxes[0];
+    for (const box of form_boxes)
+    {
+      await box.click();
+      await box.type("112");
+      await page.waitForSelector("div[id$=option-0]")
 
-    await pickup_box.click();
-    await pickup_box.type("112");
-    await page.waitForSelector("div[id$=option-0]")
-
-    const first_option = await page.$("div[id$=option-0]")
-    await first_option.click()
-    const option_val = await first_option.evaluate((el) => el.innerText)
+      const first_option = await page.$("div[id$=option-0]")
+      await first_option.click()
+      const option_val = await first_option.evaluate((el) => el.innerText)
+      
+      await page.waitForSelector("div[class$=singleValue]")
+      let pickupVal = await page.$eval("div[class$=singleValue]", (el) => el.innerText);
+      
+      expect(pickupVal).toEqual(option_val)
+    }
     
-    await page.waitForSelector("div[class$=singleValue]")
-    let pickupVal = await page.$eval("div[class$=singleValue]", (el) => el.innerText);
-    
-    expect(pickupVal).toEqual(option_val)
   });
 
 
