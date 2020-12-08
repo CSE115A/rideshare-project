@@ -18,7 +18,8 @@ afterAll(async () => {
   await browser.close()
 });
 
-describe("Map Tests", () => {
+
+describe("Loading Components Tests", () => {
   test("GET Map element", async () => {
     await page.waitForSelector(".Map")
     const map = await page.$(".Map")
@@ -86,6 +87,12 @@ describe("Components Test", () => {
     const clicked_button = await page.click(".PricingButton__button");
     expect(clicked_button).not.toBeDefined();
   });
+
+  test("Uber and Lyft Price Lists do not appear on loading", async () => {
+    const prices = await page.$(".PricesOutput")
+    expect(prices).toBe(null)
+  })
+
 });
 
 describe("Address Form Input tests", () => {
@@ -142,7 +149,58 @@ describe("Address Form Input tests", () => {
     
   });
 
+});
 
+describe("Map Tests", () => {
+  
+  test("Both the location pin and its address shows up when an address is entered and cleared when address is cleared", async () => {
+    const form_boxes = await page.$$("input");
+    for (const box of form_boxes)
+    {
+      await box.click()
+      await box.type("112")
+      await page.waitForSelector("div[id$=option-0]")
+
+      const first_option = await page.$("div[id$=option-0]")
+      const option_val = await first_option.evaluate((el) => el.innerText)
+      await first_option.click()
+      
+      await page.waitForSelector(".LocationPin")
+      let location = await page.$(".LocationPin")
+      expect(location).not.toBe(null)
+      let location_text = await page.$eval(".LocationPin__text", (el) => el.innerText)
+      expect(location_text).toBeDefined()
+      
+      await box.click()
+      await page.keyboard.press("Delete")
+      await page.waitForSelector(".LocationPin", {hidden: true})
+      location = await page.$(".LocationPin")
+      expect(location).toBe(null)
+
+    }
+    
+  });
+
+  test("Two location pins show up when both addresses are selected from each box", async () => {
+    const form_boxes = await page.$$("input");
+    const pickup_box = form_boxes[0];
+    const dropoff_box = form_boxes[1];
+
+    box_inputs = ["San Francisco", "San Jose"]
+    for (let id = 0; id < form_boxes.length; id++)
+    {
+      await form_boxes[id].click()
+      await form_boxes[id].type(box_inputs[id])
+      await page.waitForSelector("div[id$=option-0]")
+
+      let first_option = await page.$("div[id$=option-0]")
+      await first_option.click()
+    }
+    await page.waitForTimeout(700)
+    const locations = await page.$$(".LocationPin")
+    expect(locations.length).toBe(2)
+    
+  })
 });
 
 async function outputPrices(box_inputs) {
@@ -157,14 +215,14 @@ async function outputPrices(box_inputs) {
     await first_option.click()
   }
     
-    await page.waitForTimeout(2000)
+    await page.waitForTimeout(8000)
 
     await page.click(".PricingButton__button");
 } 
 
 describe("PricesOutput tests", () => {
 
-  test("display prices when both addresses are filled out", async () => {
+  test("display prices when both addresses are filled out and the button is clicked", async () => {
     const form_boxes = await page.$$("input");
     const pickup_box = form_boxes[0];
     const dropoff_box = form_boxes[1];
