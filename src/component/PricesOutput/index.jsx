@@ -2,16 +2,24 @@ import React from "react";
 import "./index.scss";
 
 const PricesOutput = ({ lyftPrices, uberPrices }) => {
-  const pricesObject = [lyftPrices, uberPrices];
+  const pricesObject = {
+    "Lyft Prices": lyftPrices,
+    "Uber Prices": uberPrices,
+  };
+
+  console.log(pricesObject);
 
   return (
     <div className="PricesOutput">
-      {pricesObject.map((ridesharePrices) => (
+      {Object.entries(pricesObject).map(([type, prices]) => (
         <div className="PricesOutput__pricesContainer">
-          {ridesharePrices.map(({ displayName, price }) => (
+          <span className="PricesOutput__header">{type}</span>
+          {prices.map(({ displayName, price }) => (
             <div key={displayName} className="PricesOutput__priceItemContainer">
               <span className="PricesOutput__pricesItem">{displayName}</span>
-              <span className="PricesOutput__pricesItem">{price}</span>
+              <span className="PricesOutput__pricesItem">
+                {price ? price : "Not Available"}
+              </span>
             </div>
           ))}
         </div>

@@ -1,9 +1,9 @@
-/* eslint-disable no-unused-vars */ /* DELETE THIS ENTIRE LINE WHEN WE USE THE VARIABLE */
 import React, { useState, useEffect } from "react";
-import "./index.scss";
-import AddressForm from "component/AddressForm/AddressForm";
-import PricingButton from "component/PricingButton/PricingButton";
+import AddressForm from "component/AddressForm/index";
+import PricingButton from "component/PricingButton/index";
+import Map from "component/Maps/index";
 import PricesOutput from "component/PricesOutput/index";
+import "./index.scss";
 
 const LandingPageView = () => {
   const [originAddress, changeOriginAddress] = useState({
@@ -34,22 +34,35 @@ const LandingPageView = () => {
 
   return (
     <div className="LandingPage">
-      <h1>Service Price Comparer</h1>
-      <AddressForm
-        originAddress={originAddress}
-        destinationAddress={destinationAddress}
-        changeOriginAddress={changeOriginAddress}
-        changeDestinationAddress={changeDestinationAddress}
-      />
-      <PricingButton
-        changeDisplayPricing={changeDisplayPricing}
-        originAddress={originAddress}
-        destinationAddress={destinationAddress}
-      />
-      {Object.keys(uberPrices).length !== 0 &&
-        Object.keys(lyftPrices).length !== 0 && (
-          <PricesOutput lyftPrices={lyftPrices} uberPrices={uberPrices} />
-        )}
+      <h1 className="LandingPage__title">Service Price Comparer</h1>
+      <div className="LandingPage__topHalf">
+        <div className="LandingPage__topLeftSide">
+          <AddressForm
+            originAddress={originAddress}
+            destinationAddress={destinationAddress}
+            changeOriginAddress={changeOriginAddress}
+            changeDestinationAddress={changeDestinationAddress}
+          />
+          <PricingButton
+            changeDisplayPricing={changeDisplayPricing}
+            originAddress={originAddress}
+            destinationAddress={destinationAddress}
+          />
+        </div>
+        <div className="LandingPage__topRightSide">
+          <Map
+            startLocation={originAddress}
+            endLocation={destinationAddress}
+            zoomLevel={9}
+          />
+        </div>
+      </div>
+      <div className="LandingPage__bottomHalf">
+        {Object.keys(uberPrices).length !== 0 &&
+          Object.keys(lyftPrices).length !== 0 && (
+            <PricesOutput lyftPrices={lyftPrices} uberPrices={uberPrices} />
+          )}
+      </div>
     </div>
   );
 };

@@ -40,6 +40,7 @@ const SelectLocation = ({ defaultOption, onChange, placeholder }) => {
         if (toChange !== "") {
           geoCodes = await axios
             .get(getGeoEndpoint, {
+              headers: { authentication: authToken },
               params: { address: toChange },
             })
             .then((res) => {
