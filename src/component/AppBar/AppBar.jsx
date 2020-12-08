@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    background: "linear-gradient(45deg, #5dc9d9 30%, #0BD989 99%)",
+    background: "linear-gradient(45deg, #5dc9d9 30%, #0bd989 99%)",
   },
   menuButton: {
     marginRight: theme.spacing(2),
