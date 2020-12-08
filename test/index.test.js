@@ -34,7 +34,6 @@ describe("Loading Components Tests", () => {
       await page.waitForSelector("div[id$=option-0]");
 
       const first_option = await page.$("div[id$=option-0]");
-      const option_val = await first_option.evaluate((el) => el.innerText);
       await first_option.click();
 
       await page.waitForSelector(".LocationPin");
@@ -52,10 +51,8 @@ describe("Loading Components Tests", () => {
 
   test("Two location pins show up when both addresses are entered", async () => {
     const form_boxes = await page.$$("input");
-    const pickup_box = form_boxes[0];
-    const dropoff_box = form_boxes[1];
 
-    box_inputs = ["San Francisco", "San Jose"];
+    const box_inputs = ["San Francisco", "San Jose"];
     for (let id = 0; id < form_boxes.length; id++) {
       await form_boxes[id].click();
       await form_boxes[id].type(box_inputs[id]);
@@ -156,7 +153,6 @@ describe("Map Tests", () => {
       await page.waitForSelector("div[id$=option-0]");
 
       const first_option = await page.$("div[id$=option-0]");
-      const option_val = await first_option.evaluate((el) => el.innerText);
       await first_option.click();
 
       await page.waitForSelector(".LocationPin");
@@ -178,10 +174,8 @@ describe("Map Tests", () => {
 
   test("Two location pins show up when both addresses are selected from each box", async () => {
     const form_boxes = await page.$$("input");
-    const pickup_box = form_boxes[0];
-    const dropoff_box = form_boxes[1];
 
-    box_inputs = ["San Francisco", "San Jose"];
+    const box_inputs = ["San Francisco", "San Jose"];
     for (let id = 0; id < form_boxes.length; id++) {
       await form_boxes[id].click();
       await form_boxes[id].type(box_inputs[id]);
