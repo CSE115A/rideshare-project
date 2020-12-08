@@ -34,7 +34,7 @@ const LandingPageView = () => {
 
   return (
     <div className="LandingPage">
-      <h1>Service Price Comparer</h1>
+      <h1 className="LandingPage__title">Service Price Comparer</h1>
       <div className="LandingPage__topHalf">
         <div className="LandingPage__topLeftSide">
           <AddressForm
