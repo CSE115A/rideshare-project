@@ -1,30 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import GoogleMapReact from "google-map-react";
-import { Icon } from "@iconify/react";
-import locationIcon from "@iconify/icons-mdi/map-marker";
-import cx from "classnames";
-import "./maps.scss";
+import LocationPin from "component/LocationPin/index";
+import "./index.scss";
 
 const googleMapsKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-
-const Location = ({ type, address }) => {
-  if (address === "") return null;
-
-  return (
-    <>
-      <div className="LocationPin">
-        <Icon
-          icon={locationIcon}
-          className={cx("LocationPin__icon", {
-            "LocationPin__icon--origin": type === "startLocation",
-            "LocationPin__icon--destination": type === "endLocation",
-          })}
-        />
-      </div>
-      <div className="LocationPin__text">{address}</div>
-    </>
-  );
-};
 
 const Map = ({ startLocation, endLocation, zoomLevel }) => {
   const mapping = { startLocation, endLocation };
@@ -80,7 +59,7 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
         yesIWantToUseGoogleMapApiInternals
       >
         {Object.entries(mapping).map(([type, { address, geoCodes }]) => (
-          <Location
+          <LocationPin
             key={type}
             type={type}
             address={address}

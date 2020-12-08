@@ -13,22 +13,3 @@
     width: auto;
   }
 }
-
-.LocationPin {
-  position: fixed;
-  transform: translate(-50%, -86%);
-
-  &__icon {
-    font-size: 5rem;
-
-    &--origin {
-      @extend .LocationPin__icon;
-      color: red;
-    }
-
-    &--destination {
-      @extend .LocationPin__icon;
-      color: blue;
-    }
-  }
-}
