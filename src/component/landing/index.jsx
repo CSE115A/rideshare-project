@@ -3,8 +3,8 @@ import AddressForm from "component/AddressForm/index";
 import PricingButton from "component/PricingButton/index";
 import Map from "component/Maps/index";
 import PricesOutput from "component/PricesOutput/index";
-import "./index.scss";
 import ButtonAppBar from "component/AppBar/AppBar";
+import "./index.scss";
 
 const LandingPageView = () => {
   const [originAddress, changeOriginAddress] = useState({
@@ -35,7 +35,7 @@ const LandingPageView = () => {
 
   return (
     <div className="LandingPage">
-      <ButtonAppBar classname="LandingPage__title" />
+      <ButtonAppBar className="LandingPage__title" />
       <div className="LandingPage__topHalf">
         <div className="LandingPage__topLeftSide">
           <AddressForm
