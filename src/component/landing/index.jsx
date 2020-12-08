@@ -33,28 +33,6 @@ const LandingPageView = () => {
     }
   }, [pricingToDisplay]);
 
-  //Hard coding address of google
-  const startLocation = {
-    address: "1600 Amphitheatre Parkway, Mountain View, California",
-    geoCodes: {
-      lat: 37.42216,
-      lng: -122.08427,
-    },
-  };
-
-  const endLocation = {
-    address: "1701 Airport Blvd, San Jose, California",
-    geoCodes: {
-      lat: 37.3639,
-      lng: -121.9289,
-    },
-  };
-
-  const pathCoords = [
-    { lat: startLocation.lat, lng: startLocation.lng },
-    { lat: endLocation.lat, lng: endLocation.lng },
-  ];
-
   return (
     <div className="LandingPage">
       <h1>Service Price Comparer</h1>
@@ -74,7 +52,6 @@ const LandingPageView = () => {
         </div>
         <div className="LandingPage__topRightSide">
           <Map
-            pathCoords={pathCoords}
             startLocation={originAddress}
             endLocation={destinationAddress}
             zoomLevel={9}

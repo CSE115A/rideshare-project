@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./maps.scss";
 import GoogleMapReact from "google-map-react";
 import { Icon } from "@iconify/react";
 import locationIcon from "@iconify/icons-mdi/map-marker";
 
-const google_maps_key = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+const googleMapsKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
 const Location = ({ text, index }) => (
   <div>
     <div className="LocationPin">
@@ -14,14 +15,10 @@ const Location = ({ text, index }) => (
   </div>
 );
 
-//Map component that takes in a location and zoom level
 const Map = ({ startLocation, endLocation, zoomLevel }) => {
-  const mapping = [
-    { type: "origin", option: startLocation },
-    { type: "destination", option: endLocation },
-  ];
-  const map = React.useRef(null);
-  const [lineRef, setLine] = React.useState(null);
+  const mapping = [startLocation, endLocation];
+  const map = useRef(null);
+  const [lineRef, setLine] = useState(null);
   useEffect(() => {
     if (map.current.maps_ != null) {
       const paths = [];
@@ -59,7 +56,7 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
     <div className="Map">
       <GoogleMapReact
         ref={map}
-        bootstrapURLKeys={{ key: google_maps_key }}
+        bootstrapURLKeys={{ key: googleMapsKey }}
         defaultCenter={{ lat: 36.9881, lng: -122.0582 }}
         defaultZoom={zoomLevel}
         onGoogleApiLoaded={({ maps }) => {
@@ -75,15 +72,15 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
         }}
         yesIWantToUseGoogleMapApiInternals
       >
-        {mapping.map(({ type, option }, index) => {
-          if (typeof option.geoCodes.lng != "undefined") {
+        {mapping.map(({ address, geoCodes }, index) => {
+          if (geoCodes.lng) {
             return (
               <Location
-                key={type}
+                key={index}
                 index={index + 1}
-                text={option.address}
-                lat={option.geoCodes.lat}
-                lng={option.geoCodes.lng}
+                text={address}
+                lat={geoCodes.lat}
+                lng={geoCodes.lng}
               />
             );
           }
