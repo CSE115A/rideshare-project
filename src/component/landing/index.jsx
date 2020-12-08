@@ -35,8 +35,7 @@ const LandingPageView = () => {
 
   return (
     <div className="LandingPage">
-      <ButtonAppBar />
-      {/* <h1 className="LandingPage__title">Service Price Comparer</h1> */}
+      <ButtonAppBar classname="LandingPage__title" />
       <div className="LandingPage__topHalf">
         <div className="LandingPage__topLeftSide">
           <AddressForm
