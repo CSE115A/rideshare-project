@@ -29,6 +29,7 @@ const SelectLocation = ({ defaultOption, onChange, placeholder }) => {
 
   return (
     <AsyncSelect
+      defaultOptions={defaultOption}
       theme={(theme) => ({
         ...theme,
         borderRadius: 5,
