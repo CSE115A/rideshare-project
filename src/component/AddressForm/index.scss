@@ -62,17 +62,19 @@ label {
     margin-left: 0;
   }
 }
-@media only screen and (max-width: 767px){
+
+@media only screen and (max-width: 767px) {
   .AddressForm__intakeTitle {
     width: 100%;
     padding-bottom: 1em;
   }
+
   .AddressForm__intakeContainer {
     flex-direction: column;
     align-items: left;
   }
+  
   .AddressForm__intakeInput {
     width: 100%;
-    padding-left: 0em;
   }
 }
