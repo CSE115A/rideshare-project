@@ -9,6 +9,7 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
   const mapping = { startLocation, endLocation };
   const map = useRef(null);
   const [lineRef, setLine] = useState(null);
+
   useEffect(() => {
     if (map.current.maps_ != null) {
       const paths = [];
