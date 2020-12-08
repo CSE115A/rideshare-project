@@ -30,6 +30,14 @@ const LandingPageView = () => {
       changeUberPrices(pricingToDisplay.message.uber);
       changeLyftPrices(pricingToDisplay.message.lyft);
     }
+    else {
+      changeUberPrices([]);
+      changeLyftPrices([]);
+      if (pricingToDisplay.status >= 400)
+      {
+        alert("Error: Bad Request");  
+      }
+    }
   }, [pricingToDisplay]);
 
   return (

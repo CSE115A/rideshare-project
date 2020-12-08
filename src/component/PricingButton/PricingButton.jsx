@@ -5,6 +5,8 @@ import "./index.scss";
 const authToken = process.env.REACT_APP_PRICES_AUTH_TOKEN;
 const pricesEndpoint = process.env.REACT_APP_PRICES_ENDPOINT;
 
+
+
 async function getPrices({
   changeDisplayPricing,
   originGeocode,
@@ -24,10 +26,18 @@ async function getPrices({
   const response = await axios
     .get(pricesEndpoint, params)
     .then((res) => {
+      
       return res.data;
     })
-    .catch(() => {
-      return false;
+    .catch((error) => {
+      return {
+        error: true,
+        status: error.response.status,
+        message: {
+          lyft: undefined,
+          uber: undefined,
+        },
+      };
     });
   if (response) changeDisplayPricing(response);
 }
@@ -37,16 +47,31 @@ const PricingButton = ({
   originAddress,
   destinationAddress,
 }) => {
+
+  function clearDisplay() {
+    const default_display = {
+      error: true,
+      status: undefined,
+      message: {
+        lyft: undefined,
+        uber: undefined,
+      },
+    }
+    changeDisplayPricing(default_display);
+  }
+
   return (
     <div className="PricingButton">
       <button
         className="PricingButton__button"
-        onClick={() =>
+        onClick={() => {
+          clearDisplay();
           getPrices({
             changeDisplayPricing,
             originGeocode: originAddress.geoCodes,
             destinationGeocode: destinationAddress.geoCodes,
-          })
+            });
+          }
         }
       >
         Compare!
