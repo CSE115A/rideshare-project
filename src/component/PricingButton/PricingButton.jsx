@@ -30,7 +30,7 @@ async function getPrices({
       return res.data;
     })
     .catch((error) => {
-      const error_response = {
+      return {
         error: true,
         status: error.response.status,
         message: {
@@ -38,7 +38,6 @@ async function getPrices({
           uber: undefined,
         },
       };
-      return error_response;
     });
   if (response) changeDisplayPricing(response);
 }
