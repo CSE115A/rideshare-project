@@ -1,0 +1,34 @@
+.Map {
+  width: 100%;
+  height: 100%;
+
+  @media only screen and (min-width: 768px) {
+    margin: auto;
+    height: 100%;
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 767px) {
+    height: 40vh;
+    width: auto;
+  }
+}
+
+.LocationPin {
+  position: fixed;
+  transform: translate(-50%, -86%);
+
+  &__icon {
+    font-size: 5rem;
+
+    &--origin {
+      @extend .LocationPin__icon;
+      color: red;
+    }
+
+    &--destination {
+      @extend .LocationPin__icon;
+      color: blue;
+    }
+  }
+}

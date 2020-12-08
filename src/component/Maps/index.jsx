@@ -1,34 +1,43 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./maps.scss";
 import GoogleMapReact from "google-map-react";
 import { Icon } from "@iconify/react";
 import locationIcon from "@iconify/icons-mdi/map-marker";
+import cx from "classnames";
+import "./maps.scss";
 
 const googleMapsKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
-const Location = ({ text, index }) => (
-  <div>
-    <div className="LocationPin">
-      <Icon icon={locationIcon} className={"LocationPin__icon" + index} />
-    </div>
-    <div className="LocationPin__text">{text}</div>
-  </div>
-);
+const Location = ({ type, address }) => {
+  if (address === "") return null;
+
+  return (
+    <>
+      <div className="LocationPin">
+        <Icon
+          icon={locationIcon}
+          className={cx("LocationPin__icon", {
+            "LocationPin__icon--origin": type === "startLocation",
+            "LocationPin__icon--destination": type === "endLocation",
+          })}
+        />
+      </div>
+      <div className="LocationPin__text">{address}</div>
+    </>
+  );
+};
 
 const Map = ({ startLocation, endLocation, zoomLevel }) => {
-  const mapping = [startLocation, endLocation];
+  const mapping = { startLocation, endLocation };
   const map = useRef(null);
   const [lineRef, setLine] = useState(null);
   useEffect(() => {
     if (map.current.maps_ != null) {
       const paths = [];
-      // creates paths { lat, lng }
       for (const props of [startLocation, endLocation]) {
         if (typeof props.geoCodes.lng != "undefined") {
           paths.push(props.geoCodes);
         }
       }
-      // sets the new bounds
       if (paths.length !== 0) {
         const bounds = new map.current.maps_.LatLngBounds();
         paths.map((geoCodes) =>
@@ -38,20 +47,18 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
         );
         map.current.map_.fitBounds(bounds);
       }
-      // resets zoom level
       if (paths.length === 1) {
         map.current.map_.setZoom(14);
       }
-      // creates the polyline
       if (paths.length === 2) {
         lineRef.setPath(paths);
         lineRef.setMap(map.current.map_);
       } else {
-        // removes polyline
         lineRef.setMap(null);
       }
     }
   }, [startLocation, endLocation, lineRef]);
+
   return (
     <div className="Map">
       <GoogleMapReact
@@ -72,20 +79,15 @@ const Map = ({ startLocation, endLocation, zoomLevel }) => {
         }}
         yesIWantToUseGoogleMapApiInternals
       >
-        {mapping.map(({ address, geoCodes }, index) => {
-          if (geoCodes.lng) {
-            return (
-              <Location
-                key={index}
-                index={index + 1}
-                text={address}
-                lat={geoCodes.lat}
-                lng={geoCodes.lng}
-              />
-            );
-          }
-          return null;
-        })}
+        {Object.entries(mapping).map(([type, { address, geoCodes }]) => (
+          <Location
+            key={type}
+            type={type}
+            address={address}
+            lat={geoCodes.lat}
+            lng={geoCodes.lng}
+          />
+        ))}
       </GoogleMapReact>
     </div>
   );

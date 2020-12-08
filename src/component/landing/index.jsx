@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */ /* DELETE THIS ENTIRE LINE WHEN WE USE THE VARIABLES uberPrices AND lyftPrices */
 import React, { useState, useEffect } from "react";
-import "./index.scss";
-import AddressForm from "component/AddressForm/AddressForm";
-import PricingButton from "component/PricingButton/PricingButton";
-import Map from "component/Maps/maps";
+import AddressForm from "component/AddressForm/index";
+import PricingButton from "component/PricingButton/index";
+import Map from "component/Maps/index";
 import PricesOutput from "component/PricesOutput/index";
+import "./index.scss";
 
 const LandingPageView = () => {
   const [originAddress, changeOriginAddress] = useState({

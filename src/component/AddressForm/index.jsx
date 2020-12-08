@@ -1,6 +1,6 @@
 import React from "react";
-import SelectLocation from "component/SelectMenu/Select";
-import "./AddressForm.scss";
+import SelectLocation from "component/SelectMenu/index";
+import "./index.scss";
 
 const AddressForm = ({
   originAddress,
