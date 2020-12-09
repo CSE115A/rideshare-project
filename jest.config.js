@@ -3,7 +3,7 @@ module.exports = {
   modulePaths: ["src/"],
   testPathIgnorePatterns: ["node_modules"],
   verbose: true,
-  globalSetup: "./test/globalSetup.js",
-  globalTeardown: "./test/globalTeardown.js",
+  globalSetup: "./testing/globalSetup.js",
+  globalTeardown: "./testing/globalTeardown.js",
   testTimeout: 60000,
 };
