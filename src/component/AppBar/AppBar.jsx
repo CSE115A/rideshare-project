@@ -23,7 +23,7 @@ export default function ButtonAppBar() {
     <AppBar position="static" className={classes.appBar}>
       <Toolbar>
         <Typography variant="h4" className={classes.title}>
-          Service Price Comparer
+          Rideshare Price Comparer
         </Typography>
       </Toolbar>
     </AppBar>
