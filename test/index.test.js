@@ -80,7 +80,7 @@ describe("Components Test", () => {
   });
 
   test("Clicking Button", async () => {
-    const clicked_button = await page.click(".PricingButton__button");
+    const clicked_button = await page.click("[type='button']");
     expect(clicked_button).not.toBeDefined();
   });
 
@@ -202,7 +202,7 @@ async function outputPrices(box_inputs) {
 
   await page.waitForTimeout(8000);
 
-  await page.click(".PricingButton__button");
+  await page.click("[type='button']");
 }
 
 describe("PricesOutput tests", () => {
@@ -253,7 +253,7 @@ describe("PricesOutput tests", () => {
     await page.keyboard.press("Delete");
 
     await page.waitForTimeout(2000);
-    await page.click(".PricingButton__button");
+    await page.click("[type='button']");
     await page.waitForTimeout(4000);
 
     prices_display = await page.$(".PricesOutput");
@@ -276,7 +276,7 @@ describe("PricesOutput tests", () => {
 
     await button.click();
 
-    await page.click(".PricingButton__button");
+    await page.click("[type='button']");
     let prices_display = await page.$(".PricesOutput");
 
     expect(prices_display).toBe(null);

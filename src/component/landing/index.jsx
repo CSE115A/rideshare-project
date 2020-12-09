@@ -3,6 +3,7 @@ import AddressForm from "component/AddressForm/index";
 import PricingButton from "component/PricingButton/index";
 import Map from "component/Maps/index";
 import PricesOutput from "component/PricesOutput/index";
+import ButtonAppBar from "component/AppBar/AppBar";
 import "./index.scss";
 
 const LandingPageView = () => {
@@ -34,7 +35,7 @@ const LandingPageView = () => {
 
   return (
     <div className="LandingPage">
-      <h1 className="LandingPage__title">Service Price Comparer</h1>
+      <ButtonAppBar className="LandingPage__title" />
       <div className="LandingPage__topHalf">
         <div className="LandingPage__topLeftSide">
           <AddressForm

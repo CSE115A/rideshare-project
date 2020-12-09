@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.1",
+    "@material-ui/icons": "^4.9.1",
     "@googlemaps/google-maps-services-js": "^3.1.13",
     "@iconify-icons/el": "^1.0.0",
     "@iconify/icons-mdi": "^1.0.151",

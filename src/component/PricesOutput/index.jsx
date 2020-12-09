@@ -7,8 +7,6 @@ const PricesOutput = ({ lyftPrices, uberPrices }) => {
     "Uber Prices": uberPrices,
   };
 
-  console.log(pricesObject);
-
   return (
     <div className="PricesOutput">
       {Object.entries(pricesObject).map(([type, prices]) => (

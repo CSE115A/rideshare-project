@@ -20,6 +20,8 @@
 
     &__topRightSide {
       float: right;
+      height: 97%;
+      padding-top: 10px;
     }
 
     &__bottomHalf {
@@ -34,7 +36,7 @@
     height: 100vh;
 
     &__topHalf {
-      height: auto;
+      height: 90vh;
     }
 
     &__topLeftSide {
@@ -42,20 +44,13 @@
     }
 
     &__topRightSide {
-      height: auto;
+      height: 44.5%;
     }
 
     &__bottomHalf {
       height: 50vh;
       background-color: lightgray;
+      padding-bottom: 100px;
     }
   }
-}
-
-h1 {
-  border-bottom-style: solid;
-  border-width: 2px;
-  text-align: center;
-  background-color: lightgreen;
-  margin: 0;
 }
